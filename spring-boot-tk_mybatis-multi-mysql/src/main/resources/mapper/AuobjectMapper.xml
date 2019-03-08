@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboottk_mybatismultimysql.dao.firstdao.AuobjectMapper" >
+  <resultMap id="BaseResultMap" type="com.example.springboottk_mybatismultimysql.entity.Auobject" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="schedule" property="schedule" jdbcType="INTEGER" />
+    <result column="enable" property="enable" jdbcType="INTEGER" />
+    <result column="logtime" property="logtime" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--会返回新增的ID-->
+  <!--<insert id="auobjectInfo" useGeneratedKeys="true" keyProperty="id" parameterMap="cn.lsmsp.daaauditcenter.entity.Auobject">-->
+    <!--insert into au_object values (#{name},#{remark},#{schedule,#{enable},#{logtime},#{createtime})-->
+  <!--</insert>-->
+</mapper>

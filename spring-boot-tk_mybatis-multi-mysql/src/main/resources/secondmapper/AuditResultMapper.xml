@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboottk_mybatismultimysql.dao.secondDao.AuditResultDao">
+
+
+    <resultMap id="map" type="java.util.HashMap"></resultMap>
+
+    <resultMap id="column" type="com.example.springboottk_mybatismultimysql.entity.Column">
+        <result column="column_name" jdbcType="VARCHAR" property="name" />
+        <result column="data_type" jdbcType="VARCHAR" property="type" />
+
+    </resultMap>
+
+    <select id="listAllTables" resultType="java.lang.String">
+        select table_name from information_schema.tables where table_schema='daa-audit-result'
+    </select>
+
+
+    <select id="getColumns" resultMap="column">
+        <![CDATA[
+        select column_name,data_type  from information_schema.COLUMNS
+       where TABLE_SCHEMA = (select database()) and TABLE_NAME= #{tableName}
+      ]]>
+
+    </select>
+</mapper>
