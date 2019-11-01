@@ -1,0 +1,4 @@
+jasypt:
+  encryptor:
+    #这里可以理解成是加解密的时候使用的密钥
+    password: JUEH848*&F(feuis
