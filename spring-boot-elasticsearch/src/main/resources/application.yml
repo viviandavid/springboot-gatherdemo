@@ -7,8 +7,11 @@ server:
 
 # elasticsearch
 # 9200端口是用来让HTTP REST API来访问ElasticSearch，而9300端口是传输层监听的默认端口
-#spring:
-#  data:
-#    elasticsearch:
-#      cluster-name: my-application
-#      cluster-nodes: 10.20.4.66:9300
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: 10.20.4.66
+      cluster-port: 9200
+      username: elastic
+      password: 654321 
+      
