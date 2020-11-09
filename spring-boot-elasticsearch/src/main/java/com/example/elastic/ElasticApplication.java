@@ -10,7 +10,7 @@ public class ElasticApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(ElasticApplication.class, args);
-        ElasticService service = (ElasticService) context.getBean("ElasticService");
+        ElasticService service = (ElasticService) context.getBean("elasticService");
         Thread thread = new Thread(service);
         thread.start();
     }
