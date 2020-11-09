@@ -2,16 +2,16 @@ server:
   port: 7777
   tomcat:
     uri-encoding: utf-8
-  servlet:
-    context-path: /@project.artifactId@
+#  servlet:
+#    context-path: /@project.artifactId@
 
 # elasticsearch
 # 9200端口是用来让HTTP REST API来访问ElasticSearch，而9300端口是传输层监听的默认端口
 spring:
   data:
     elasticsearch:
-      cluster-nodes: 10.20.4.66
+      cluster-nodes: 10.20.4.167
       cluster-port: 9200
       username: elastic
-      password: 654321 
+      password: 123456
       

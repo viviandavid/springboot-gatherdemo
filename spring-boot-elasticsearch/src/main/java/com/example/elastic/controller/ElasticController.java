@@ -1,8 +1,7 @@
 package com.example.elastic.controller;
 
-import com.example.elastic.service.elasticService;
+import com.example.elastic.service.ElasticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-public class elasticController {
+public class ElasticController {
 
     @Autowired
-    private elasticService service;
+    private ElasticService service;
 
     @RequestMapping(value = "/ttt",method = RequestMethod.GET)
     public boolean test() throws IOException {
