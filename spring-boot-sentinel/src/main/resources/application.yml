@@ -1,0 +1,9 @@
+spring:
+ application:
+   name: sentinelserver
+# cloud:
+#  sentinel:
+#    transport:
+#      dashboard: localhost:8080
+#      heartbeat-interval-ms: 500
+#      eager: true
