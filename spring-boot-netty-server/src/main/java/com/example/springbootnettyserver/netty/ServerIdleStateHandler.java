@@ -1,6 +1,7 @@
 package com.example.springbootnettyserver.netty;
 
 import com.example.springbootnettyserver.pojo.HeartBeatInfo;
+import com.example.springbootnettyserver.pojo.MyProtocolBean;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
@@ -19,7 +20,7 @@ public class ServerIdleStateHandler extends IdleStateHandler {
     /**
      * 设置空闲检测时间为 30s
      */
-    private static final int READER_IDLE_TIME = 30;
+    private static final int READER_IDLE_TIME = 10;
     public ServerIdleStateHandler() {
         super(READER_IDLE_TIME, 0, 0, TimeUnit.SECONDS);
     }
@@ -27,9 +28,7 @@ public class ServerIdleStateHandler extends IdleStateHandler {
     @Override
     protected void channelIdle(ChannelHandlerContext ctx, IdleStateEvent evt) throws Exception {
         log.info("{} 秒内没有读取到数据,发送心跳包", READER_IDLE_TIME);
-        HeartBeatInfo heartBeatInfo = new HeartBeatInfo();
-        heartBeatInfo.setStatus(0);
-        heartBeatInfo.setName("我是服务端啊");
-        ctx.writeAndFlush(heartBeatInfo);
+        String message = "come on baby!!!";
+        ctx.writeAndFlush(new MyProtocolBean((byte)0xA,(byte)0xA,message.getBytes().length, message));
     }
 }

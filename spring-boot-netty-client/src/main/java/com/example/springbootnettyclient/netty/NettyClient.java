@@ -1,5 +1,6 @@
 package com.example.springbootnettyclient.netty;
 
+import com.example.springbootnettyserver.pojo.HeartBeatInfo;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
