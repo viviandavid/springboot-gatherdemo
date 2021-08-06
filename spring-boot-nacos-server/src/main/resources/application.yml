@@ -1,0 +1,37 @@
+server:
+  port: 8886
+spring:
+  application:
+    name: my-nacos-server
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        service: ${spring.application.name}
+        server-addr: 192.168.70.130:8882
+      config:
+        server-addr: 192.168.70.130:8882
+        file-extension: yml
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: my_nacos_client  #饥饿加载的服务名
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#Ribbon的超时
+#ribbon.ConnectTimeout=3000
+#  ribbon.ReadTimeout=60000
+#  #对第一次请求的服务的重试次数
+#  ribbon.MaxAutoRetries=1
+#  #要重试的下一个服务的最大数量（不包括第一个服务）
+#  ribbon.MaxAutoRetriesNextServer=1
+#  #无论是请求超时或者socket read timeout都进行重试
+#  ribbon.OkToRetryOnAllOperations=true
+#  #默认随机策略
+#  ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule

@@ -2,20 +2,27 @@ package com.example.elastic.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import jdk.nashorn.internal.runtime.RewriteException;
 import lombok.extern.java.Log;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.script.ScriptType;
+import org.elasticsearch.script.mustache.SearchTemplateRequest;
+import org.elasticsearch.script.mustache.SearchTemplateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -123,6 +130,19 @@ public class ElasticService implements Runnable{
             e.printStackTrace();
             log.info("保存失败！");
         }
+    }
+
+    public void test() throws IOException {
+        SearchTemplateRequest request = new SearchTemplateRequest();
+        request.setRequest(new SearchRequest("mytest"));
+        request.setScriptType(ScriptType.INLINE);
+        String sql = null;
+        request.setScript(sql);
+        Map<String,Object> stringObjectMap = new HashMap<>();
+        request.setScriptParams(stringObjectMap);
+
+        SearchTemplateResponse response = client.searchTemplate(request, RequestOptions.DEFAULT);
+        response.getResponse();
     }
 
 

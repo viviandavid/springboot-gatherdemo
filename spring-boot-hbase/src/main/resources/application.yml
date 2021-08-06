@@ -1,0 +1,10 @@
+application:
+  hbase:
+    config:
+      hbase.zookeeper.quorum: 192.168.0.137
+      hbase.zookeeper.property.clientPort: 2181
+    extract-family-name: dw_starsearch_web_content_xpath_test
+    extract-table-name: web_info
+  kafka:
+    topics: spider_content_prod_queue_sina_mil
+    error-topic: spider_content_error_queue
