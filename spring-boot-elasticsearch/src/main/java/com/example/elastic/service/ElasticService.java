@@ -36,6 +36,8 @@ public class ElasticService implements Runnable{
     @Autowired
     private RestHighLevelClient client;
 
+
+
     public boolean IndexExists() throws IOException {
 
 //        QueryBuilder queryBuilder = QueryBuilders.matchQuery("age",1);
