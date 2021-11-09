@@ -51,12 +51,14 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         //将消息发送队列中的消息写入到SocketChannel中发送给对方
         ctx.flush();
     }
 
 
+    @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         //当发生异常时释放资源
         ctx.close();
